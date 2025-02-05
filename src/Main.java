@@ -4,11 +4,41 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "adepte_xiao00";
 
+
     public static void main(String[] args) {
+        Student student1 = new Student("Asan", 20, 3.65);
+        Student student2 = new Student("Merey", 22, 2.28);
+        Student student3 = new Student("Asan", 20, 3.65);
+
+        Teacher teacher1 = new Teacher("Mrs.Orazova", "OOP", 6);
+        Teacher teacher2 = new Teacher("Ms.Khaimuldin", "OOP", 12);
+
+        Student[] students = { student1, student2 };
+        Teacher[] teachers = { teacher1, teacher2 };
+        Institution institution = new Institution("Astana IT University", "Astana");
+
+
+        System.out.println("\nComparing Student 1 and Student 3: " + student1.equals(student3));
+        System.out.println("Comparing Student 1 and Student 2: " + student1.equals(student2));
+
+        System.out.println("\nComparing Teacher 1 and Teacher 2: " + teacher1.equals(teacher2));
+
+        Institution institution2 = new Institution("Astana IT University", "Astana");
+        System.out.println("\nComparing Institution 1 and Institution 2: " + institution.equals(institution2));
+
+        
+        institution.filterTeacherByExperience(5);
+
+        institution.sortStudentByGpa();
+        institution.sortTeacherByExperience();
+
+
+        institution.searchPersonByName("Asan");
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
 
@@ -137,4 +167,5 @@ class Teacher {
     public int getExperience() {
         return experience;
     }
+
 }
